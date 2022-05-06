@@ -49,7 +49,7 @@ message ValidateResponse {
 // UpdateUserRole
 
 message UpdateUserRoleRequest {
-  repeated string role = 1;
+  repeated string roles = 1;
   string userId = 2;
 }
 
