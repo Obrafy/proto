@@ -7,6 +7,7 @@ service AuthService {
   rpc Login (LoginRequest) returns (LoginResponse) {}
   rpc Validate (ValidateRequest) returns (ValidateResponse) {}
   rpc UpdateUserRole (UpdateUserRoleRequest) returns (UpdateUserRoleResponse) {}
+  rpc Skill (SkillRequest) returns (SkillResponse) {}
 }
 
 // Register
@@ -54,6 +55,17 @@ message UpdateUserRoleRequest {
 }
 
 message UpdateUserRoleResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
+
+// Skill
+
+message SkillRequest {
+  string skillId = 1;
+}
+
+message SkillResponse {
   int32 status = 1;
   repeated string error = 2;
 }
