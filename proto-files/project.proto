@@ -4,7 +4,7 @@ package project;
 
 service ProjectService {
   rpc create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
-  rpc findAll (ProjectRequest) returns (ProjectCreateResponse) {}
+  rpc findAll (ProjectRequest) returns (ProjectResponse) {}
 }
 
 // Create Project
