@@ -4,6 +4,7 @@ package project;
 
 service ProjectService {
   rpc create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
+  rpc findAll (ProjectRequest) returns (ProjectCreateResponse) {}
 }
 
 // Create Project
@@ -41,4 +42,28 @@ message PossibleSkills {
 message ProjectCreateResponse {
   int32 status = 1;
   repeated string error = 2;
+}
+
+// Find Project
+
+message ProjectRequest {}
+
+message ProjectResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    repeated FindAllResponse data = 3;
+}
+
+message FindAllResponse {
+    string status = 1;
+    string startDate = 2;
+    string expectedFinishedDate = 3;
+    string responsible = 4;
+    Address address = 5;
+    repeated Tasks tasks = 6;
+    string _id = 7;
+}
+
+message Tasks {
+    repeated Task task = 1;
 }
