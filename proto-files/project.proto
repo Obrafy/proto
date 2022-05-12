@@ -3,6 +3,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
 
 package project;
 
@@ -66,7 +67,7 @@ message FindAllData {
     string responsible = 4;
     Address address = 5;
     repeated Tasks tasks = 6;
-    bytes _id = 7;
+    google.protobuf.Any _id = 7;
 }
 
 message Tasks {
