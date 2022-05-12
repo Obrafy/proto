@@ -1,6 +1,11 @@
+
+
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 package project;
+
 
 service ProjectService {
   rpc create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
@@ -56,14 +61,22 @@ message ProjectResponse {
 
 message FindAllData {
     string status = 1;
-    string startDate = 2;
-    string expectedFinishedDate = 3;
+    google.protobuf.Timestamp startDate = 2;
+    google.protobuf.Timestamp expectedFinishedDate = 3;
     string responsible = 4;
     Address address = 5;
-    Tasks tasks = 6;
-    string _id = 7;
+    repeated Tasks tasks = 6;
+    bytes _id = 7;
 }
 
 message Tasks {
-    repeated string task = 1;
+    string task = 1;
+    FieldsOverwriters fieldsOverwriters = 2;
+}
+
+message FieldsOverwriters {
+    string category  = 1;
+    string activity  = 2;
+    string noiseLevel = 3;
+    string dirtyLevel = 4;
 }
