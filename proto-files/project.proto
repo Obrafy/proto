@@ -2,16 +2,17 @@
 
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/any.proto";
-
 package project;
-
 
 service ProjectService {
   rpc create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
-  rpc findAll (ProjectRequest) returns (ProjectResponse) {}
+  rpc findAll (FindAllRequest) returns (FindAllResponse) {}
+  rpc findOne (FindOneRequest) returns (FindOneResponse) {}
+  rpc update (UpdateRequest) returns (UpdateResponse) {}
+  rpc remove (RemoveRequest) returns (RemoveResponse) {}
+  rpc findAllTaskOfProject (FindAllTaskOfProjectRequest) returns (FindAllTaskOfProjectResponse) {}
 }
+
 
 // Create Project
 
@@ -23,6 +24,85 @@ message ProjectCreateRequest {
     repeated Task tasks = 5;
 }
 
+message ProjectCreateResponse {
+    int32 status = 1;
+    string error = 2;
+  }
+
+// findAll
+
+message FindAllRequest {}
+
+message FindAllResponse {
+    int32 status = 1;
+    string error = 2;
+    repeated FindAllData data = 3;
+}
+
+message FindAllData {
+    string status = 1;
+    int64 startDate = 2;
+    int64 expectedFinishedDate = 3;
+    string responsible = 4;
+    Address address = 5;
+    repeated Tasks tasks = 6;
+    string _id = 7;
+}
+
+// findOne
+
+message FindOneRequest {
+    string id =1;
+}
+
+message FindOneResponse {
+    int32 status = 1;
+    string error = 2;
+    FindOnData data = 3;
+}
+
+message FindOnData {}
+
+// update
+
+message UpdateRequest {
+    string id = 1;
+}
+
+message UpdateResponse {
+    int32 status = 1;
+    string error = 2;
+    UpdateData data = 3;
+}
+
+message UpdateData {}
+
+// remove
+
+message RemoveRequest {
+    string id = 1;
+}
+
+message RemoveResponse {
+    int32 status = 1;
+    string error = 2;
+}
+
+// FindAllTaskOfProjectRequest
+
+message FindAllTaskOfProjectRequest {
+    string id = 1;
+}
+
+message FindAllTaskOfProjectResponse {
+    int32 status = 1;
+    string error = 2;
+    FindAllTaskOfProjectData data = 3;
+}
+
+message FindAllTaskOfProjectData {}
+
+// 
 message Address {
     string zipCode = 1;
     string street = 2;
@@ -40,39 +120,14 @@ message Task {
     repeated PossibleSkills possibleSkills = 5;
 }
 
-message PossibleSkills {
-    string skillId = 1;
-    int32 requiredSkillLevel = 2;
-}
-
-message ProjectCreateResponse {
-  int32 status = 1;
-  repeated string error = 2;
-}
-
-// Find Project
-
-message ProjectRequest {}
-
-message ProjectResponse {
-    int32 status = 1;
-    repeated string error = 2;
-    repeated FindAllData data = 3;
-}
-
-message FindAllData {
-    string status = 1;
-    google.protobuf.Timestamp startDate = 2;
-    google.protobuf.Timestamp expectedFinishedDate = 3;
-    string responsible = 4;
-    Address address = 5;
-    repeated Tasks tasks = 6;
-    google.protobuf.Any _id = 7;
-}
-
 message Tasks {
     string task = 1;
     FieldsOverwriters fieldsOverwriters = 2;
+}
+
+message PossibleSkills {
+    string skillId = 1;
+    int32 requiredSkillLevel = 2;
 }
 
 message FieldsOverwriters {
