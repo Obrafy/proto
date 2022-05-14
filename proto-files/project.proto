@@ -122,7 +122,12 @@ message FindAllTaskOfProjectResponse {
     FindAllTaskOfProjectData data = 3;
 }
 
-message FindAllTaskOfProjectData {}
+message FindAllTaskOfProjectData {
+    string category = 1;
+    string activity = 2;
+    string noiseLevel = 3;
+    string messLevel = 4;
+}
 
 // 
 message Address {
