@@ -45,8 +45,8 @@ message FindAllData {
     int64 expectedFinishedDate = 3;
     string responsible = 4;
     Address address = 5;
-    repeated ProjectTasks tasks = 6;
-    string _id = 7;
+    string _id = 6;
+    // repeated ProjectTasks tasks = 7;
 }
 
 // findOne
@@ -61,12 +61,20 @@ message FindOneResponse {
     FindOnData data = 3;
 }
 
-message FindOnData {}
+message FindOnData {
+    string status = 1;
+    int64 startDate = 2;
+    int64 expectedFinishedDate = 3;
+    string responsible = 4;
+    Address address = 5;
+    string _id = 6;
+}
 
 // update
 
 message UpdateRequest {
     string id = 1;
+    UpdateProjectData data = 2;
 }
 
 message UpdateResponse {
@@ -75,7 +83,21 @@ message UpdateResponse {
     UpdateData data = 3;
 }
 
-message UpdateData {}
+message UpdateData {
+    string status = 1;
+    int64 startDate = 2;
+    int64 expectedFinishedDate = 3;
+    string responsible = 4;
+    Address address = 5;
+    string _id = 6;
+}
+
+message UpdateProjectData {
+    string status = 1;
+    string startDate = 2;
+    string expectedFinishedDate = 3;
+    string responsible = 4;
+}
 
 // remove
 
