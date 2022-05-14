@@ -45,7 +45,7 @@ message FindAllData {
     int64 expectedFinishedDate = 3;
     string responsible = 4;
     Address address = 5;
-    repeated Tasks tasks = 6;
+    repeated ProjectTasks tasks = 6;
     string _id = 7;
 }
 
@@ -120,7 +120,7 @@ message Task {
     repeated PossibleSkills possibleSkills = 5;
 }
 
-message Tasks {
+message ProjectTasks {
     string task = 1;
     FieldsOverwriters fieldsOverwriters = 2;
 }
