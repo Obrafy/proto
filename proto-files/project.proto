@@ -45,7 +45,7 @@ message FindAllData {
     int64 expectedFinishedDate = 3;
     string responsible = 4;
     Address address = 5;
-    string _id = 6;
+    string id = 6;
     // repeated ProjectTasks tasks = 7;
 }
 
@@ -67,7 +67,7 @@ message FindOnData {
     int64 expectedFinishedDate = 3;
     string responsible = 4;
     Address address = 5;
-    string _id = 6;
+    string id = 6;
 }
 
 // update
@@ -89,7 +89,7 @@ message UpdateData {
     int64 expectedFinishedDate = 3;
     string responsible = 4;
     Address address = 5;
-    string _id = 6;
+    string id = 6;
 }
 
 message UpdateProjectData {
