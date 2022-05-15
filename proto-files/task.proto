@@ -41,7 +41,7 @@ message FindOneRequest {
 message FindOneResponse {
     int32 status = 1;
     string error = 2;
-    repeated TaskDataResponse data = 3;
+    TaskDataResponse data = 3;
 }
 
 // update
@@ -51,7 +51,7 @@ message UpdateRequest {
 message UpdateResponse {
     int32 status = 1;
     string error = 2;
-    repeated TaskDataResponse data = 3;
+    TaskDataResponse data = 3;
 }
 
 // remove
