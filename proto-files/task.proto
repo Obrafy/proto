@@ -24,6 +24,7 @@ message CreateRequest {
 message CreateResponse {
     int32 status = 1;
     string error = 2;
+    TaskDataResponse data = 3;
 }
 
 // FindAll
