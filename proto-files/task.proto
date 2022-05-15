@@ -1,0 +1,79 @@
+
+syntax = "proto3";
+
+package task;
+
+service TaskService {
+  rpc create (CreateRequest) returns (CreateResponse) {}
+  rpc findAll (FindAllRequest) returns (FindAllResponse) {}
+  rpc findOne (FindOneRequest) returns (FindOneResponse) {}
+  rpc update (UpdateRequest) returns (UpdateResponse) {}
+  rpc remove (RemoveRequest) returns (RemoveResponse) {}
+}
+
+
+// Create
+message CreateRequest {
+    string category = 1;
+    string activity = 2;
+    string noiseLevel = 3;
+    string messLevel = 4;
+    repeated PossibleSkills possibleSkills = 5;
+}
+
+message CreateResponse {
+    int32 status = 1;
+    string error = 2;
+}
+
+// FindAll
+message FindAllRequest {}
+message FindAllResponse {
+    int32 status = 1;
+    string error = 2;
+    repeated TaskDataResponse data = 3;
+}
+
+// FindOne
+message FindOneRequest {
+    string id = 1;
+}
+message FindOneResponse {
+    int32 status = 1;
+    string error = 2;
+    repeated TaskDataResponse data = 3;
+}
+
+// update
+message UpdateRequest {
+    string id = 1;
+}
+message UpdateResponse {
+    int32 status = 1;
+    string error = 2;
+    repeated TaskDataResponse data = 3;
+}
+
+// remove
+message RemoveRequest {
+    string id = 1;
+}
+message RemoveResponse {
+    int32 status = 1;
+    string error = 2;
+}
+
+message  TaskDataResponse {
+    string category = 1;
+    string activity = 2;
+    string noiseLevel = 3;
+    string messLevel = 4;
+    repeated PossibleSkills possibleSkills = 5;
+    string id = 6;
+}
+
+message PossibleSkills {
+    string skillId = 1;
+    int32 requiredSkillLevel = 2;
+}
+
