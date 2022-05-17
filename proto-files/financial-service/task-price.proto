@@ -7,7 +7,7 @@ service TaskPrice {
     rpc Find (FindByIdRequest) returns (FindResponse) {}
     rpc FindOne (FindByIdRequest) returns (WithObjectResponse) {}
     rpc Update (UpdateRequest) returns (WithObjectResponse) {}
-    rpc Delete (FindByIdRequest) returns () {}
+    rpc Delete (FindByIdRequest) returns (DeleteResponse) {}
 }
 
 
