@@ -20,7 +20,7 @@ message TaskPriceObject {
 
 
 message WithObjectResponse {
-    in32 status = 1;
+    int32 status = 1;
     string error = 2;
     TaskPriceObject data = 3;
 }
@@ -38,7 +38,7 @@ message CreateRequest {
 
 
 message FindResponse {
-    in32 status = 1;
+    int32 status = 1;
     string error = 2;
     repeated TaskPriceObject data = 3;
 }
