@@ -145,6 +145,7 @@ message FindAllTaskOfProjectData {
     LevelType dirtLevel = 4;
     string description = 5;
     UnityType unity = 6;
+    repeated PossibleSkills possibleSkills = 7;
 }
 
 // FieldsOverwriters
