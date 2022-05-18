@@ -11,14 +11,24 @@ service TaskService {
   rpc remove (RemoveRequest) returns (RemoveResponse) {}
 }
 
-
 // Create
 message CreateRequest {
+    enum LevelType {
+        LOW = 0;
+        HIGH = 1;
+    }
+    enum UnityType {
+        VB = 0;
+        M2 = 1;
+        UNID = 3;
+    }
     string category = 1;
     string activity = 2;
-    string noiseLevel = 3;
-    string messLevel = 4;
-    repeated PossibleSkills possibleSkills = 5;
+    LevelType noiseLevel = 3;
+    LevelType dirtLevel = 4;
+    string description = 5;
+    UnityType unity = 6;
+    repeated PossibleSkills possibleSkills = 7;
 }
 
 message CreateResponse {
@@ -69,7 +79,7 @@ message  TaskDataResponse {
     string category = 1;
     string activity = 2;
     string noiseLevel = 3;
-    string messLevel = 4;
+    string dirtLevel = 4;
     repeated PossibleSkills possibleSkills = 5;
     string id = 6;
 }
@@ -78,7 +88,7 @@ message TaskDataRequest {
     string category = 1;
     string activity = 2;
     string noiseLevel = 3;
-    string messLevel = 4;
+    string dirtLevel = 4;
     repeated PossibleSkills possibleSkills = 5;
     string id = 6;
 }
