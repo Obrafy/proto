@@ -2,8 +2,26 @@ syntax = "proto3";
 
 package auth;
 
-import "authentication-service/user.proto";
+// Types 
 
+// Role Enum
+enum Role {
+  USER = 0;
+  ADMIN = 1;
+  SUDO = 2;
+}
+
+// User Message
+message User {
+  string email = 1;
+  string password = 2;
+  int64 lastLogin = 3;
+  repeated Role roles = 4;
+  int64 createdAt = 5;
+  int64 updatedAt = 6;
+}
+
+// Service
 service AuthService {
   // Pure Authentication
   rpc Register (RegisterRequest) returns (RegisterResponse) {}
