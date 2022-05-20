@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-import "./user.proto";
+import "authentication-service/user.proto";
 
 service AuthService {
   // Pure Authentication
