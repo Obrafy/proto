@@ -4,17 +4,17 @@ package auth;
 
 // Role Enum
 enum Role {
-  USER = 1;
-  ADMIN = 2;
-  SUDO = 3;
+  USER = 0;
+  ADMIN = 1;
+  SUDO = 2;
 }
 
 // User Message
 message User {
   string email = 1;
   string password = 2;
-  Date lastLogin = 3;
+  int64 lastLogin = 3;
   repeated Role roles = 4;
-  Date createdAt = 5;
-  Date updatedAt = 6;
+  int64 createdAt = 5;
+  int64 updatedAt = 6;
 }
