@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package auth;
+
+// Role Enum
+enum Role {
+  USER = 1;
+  ADMIN = 2;
+  SUDO = 3;
+}
+
+// User Message
+message User {
+  string email = 1;
+  string password = 2;
+  Date lastLogin = 3;
+  repeated Role roles = 4;
+  Date createdAt = 5;
+  Date updatedAt = 6;
+}
