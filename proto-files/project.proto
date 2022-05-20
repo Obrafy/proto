@@ -137,7 +137,7 @@ message FindAllTaskOfProjectData {
     enum UnityType {
         VB = 0;
         M2 = 1;
-        UNID = 3;
+        UNID = 2;
     }
     string category = 1;
     string activity = 2;
@@ -180,7 +180,7 @@ message Task {
     enum UnityType {
         VB = 0;
         M2 = 1;
-        UNID = 3;
+        UNID = 2;
     }
     string category = 1;
     string activity = 2;
@@ -209,13 +209,12 @@ message FieldsOverwriters {
     enum UnityType {
         VB = 0;
         M2 = 1;
-        UNID = 3;
+        UNID = 2;
     }
-    string category = 1;
-    string activity = 2;
-    LevelType noiseLevel = 3;
-    LevelType dirtLevel = 4;
-    string description = 5;
-    UnityType unity = 6;
-    repeated PossibleSkills possibleSkills = 7;
+    optional string category = 1;
+    optional string activity = 2;
+    optional LevelType noiseLevel = 3;
+    optional LevelType dirtLevel = 4;
+    optional string description = 5;
+    optional UnityType unity = 6;
 }
