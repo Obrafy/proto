@@ -151,8 +151,9 @@ message FindAllTaskOfProjectData {
 // FieldsOverwriters
 
 message FieldsOverwritersRequest {
-    string taskId = 1;
-    FieldsOverwriters data = 2;
+    string projectId = 1;
+    string taskId = 2;
+    FieldsOverwriters data = 3;
 }
 
 message FieldsOverwritersResponse {
