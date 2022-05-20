@@ -20,7 +20,7 @@ message CreateRequest {
     enum UnityType {
         VB = 0;
         M2 = 1;
-        UNID = 3;
+        UNID = 2;
     }
     string category = 1;
     string activity = 2;
