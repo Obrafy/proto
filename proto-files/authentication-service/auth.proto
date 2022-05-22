@@ -47,6 +47,7 @@ message RegisterRequest {
 message RegisterResponseData {
   string userId = 1;
 }
+
 message RegisterResponse {
   int32 status = 1;
   repeated string error = 2;
@@ -54,45 +55,65 @@ message RegisterResponse {
 }
 
 // Login
+// Request
 message LoginRequest {
   string email = 1;
   string password = 2;
 }
 
+// Response
+message LoginResponseData {
+  string token = 1;
+}
+
 message LoginResponse {
   int32 status = 1;
   repeated string error = 2;
-  string token = 3;
+  LoginResponseData data = 3;
 }
 
 // Validate
+// Request
 message ValidateRequest {
   string token = 1;
+}
+
+// Response
+message ValidateResponseData {
+  string userId = 1;
 }
 
 message ValidateResponse {
   int32 status = 1;
   repeated string error = 2;
-  string userId = 3;
+  ValidateResponseData data = 3;
 }
 
 // FindUserById
+// Request
 message FindUserByIdRequest {
   string userId = 1;
+}
+
+// Response
+message FindUserByIdResponseData {
+  User user = 1;
 }
 
 message FindUserByIdResponse {
   int32 status = 1;
   repeated string error = 2;
-  User user = 3;
+  FindUserByIdResponseData data = 3;
 }
 
 // UpdateUserRole
+// Request
 message UpdateUserRoleRequest {
   repeated Role roles = 1;
   string userId = 2;
 }
 
+// Response
 message UpdateUserRoleResponse {
   int32 status = 1;
   repeated string error = 2;
