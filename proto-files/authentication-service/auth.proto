@@ -37,14 +37,20 @@ service AuthService {
 }
 
 // Register
+// Request
 message RegisterRequest {
   string email = 1;
   string password = 2;
 }
 
+// Response
+message RegisterResponseData {
+  string userId = 1;
+}
 message RegisterResponse {
   int32 status = 1;
   repeated string error = 2;
+  RegisterResponseData data = 3;
 }
 
 // Login
