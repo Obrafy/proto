@@ -4,12 +4,14 @@ package taskPrice;
 
 service TaskPrice {
     rpc Create (CreateRequest) returns (WithObjectResponse) {}
-    rpc Find (FindByIdRequest) returns (FindResponse) {}
+    rpc Find (Empty) returns (FindResponse) {}
     rpc FindOne (FindByIdRequest) returns (WithObjectResponse) {}
     rpc Update (UpdateRequest) returns (WithObjectResponse) {}
     rpc Delete (FindByIdRequest) returns (DeleteResponse) {}
 }
 
+
+message Empty {}
 
 message TaskPriceObject {
     string taskId = 1;
