@@ -14,11 +14,10 @@ enum Role {
 // User Message
 message User {
   string email = 1;
-  string password = 2;
-  int64 lastLogin = 3;
-  repeated Role roles = 4;
-  int64 createdAt = 5;
-  int64 updatedAt = 6;
+  int64 lastLogin = 2;
+  repeated Role roles = 3;
+  int64 createdAt = 4;
+  int64 updatedAt = 5;
 }
 
 // Service
