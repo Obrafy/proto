@@ -101,7 +101,9 @@ message ValidateResponse {
 
 // ActivateUser
 // Request
-message ActivateUserRequest {}
+message ActivateUserRequest {
+  string userId = 1;
+}
 
 //Response
 message ActivateUserResponseData {}
