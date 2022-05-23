@@ -37,9 +37,16 @@ service AuthService {
   rpc Validate (ValidateRequest) returns (ValidateResponse) {}
 
   // User Management
-  rpc ActivateUser (ActivateUserRequest) returns (ActivateUserResponse) {}
   rpc FindUserById (FindUserByIdRequest) returns (FindUserByIdResponse) {}
+  rpc RemoveUserById (RemoveUserByIdRequest) returns (RemoveUserByIdResponse) {}
+  
+  // User Status Mangement 
+  rpc ActivateUserById (ActivateUserByIdRequest) returns (ActivateUserByIdResponse) {}
+  rpc DeactivateUserById (DeactivateUserByIdRequest) returns (DeactivateUserByIdResponse) {}
+  
+  // User Role Management
   rpc UpdateUserRole (UpdateUserRoleRequest) returns (UpdateUserRoleResponse) {}
+  
   
   // Skill Management
   rpc Skill (SkillRequest) returns (SkillResponse) {}
@@ -101,17 +108,32 @@ message ValidateResponse {
 
 // ActivateUser
 // Request
-message ActivateUserRequest {
+message ActivateUserByIdRequest {
   string userId = 1;
 }
 
 //Response
-message ActivateUserResponseData {}
+message ActivateUserByIdResponseData {}
 
-message ActivateUserResponse {
+message ActivateUserByIdResponse {
   int32 status = 1;
   repeated string error = 2;
-  ActivateUserResponseData data = 3;
+  ActivateUserByIdResponseData data = 3;
+}
+
+// DeativateUser
+// Request
+message DeactivateUserByIdRequest {
+  string userId = 1;
+}
+
+//Response
+message DeactivateUserByIdResponseData {}
+
+message DeactivateUserByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  DeactivateUserByIdResponseData data = 3;
 }
 
 
@@ -130,6 +152,21 @@ message FindUserByIdResponse {
   int32 status = 1;
   repeated string error = 2;
   FindUserByIdResponseData data = 3;
+}
+
+// RemoveUserById
+// Request
+message RemoveUserByIdRequest {
+  string userId = 1;
+}
+
+// Response
+message RemoveUserByIdResponseData {}
+
+message RemoveUserByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  RemoveUserByIdResponseData data = 3;
 }
 
 // UpdateUserRole
