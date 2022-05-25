@@ -355,17 +355,17 @@ message FindSkillByNameResponse {
 
 // FindAllSkills
 // Request
-message FindAllSkillsRequestFilter {
-  message FindAllSkillsRequestCategoriesFilter {
-    string categoryId = 1;
-  }
+// message FindAllSkillsRequestFilter {
+//   message FindAllSkillsRequestCategoriesFilter {
+//     string categoryId = 1;
+//   }
 
 
-  repeated FindAllSkillsRequestCategoriesFilter categories = 1;
-}
+//   repeated FindAllSkillsRequestCategoriesFilter categories = 1;
+// }
 
 message FindAllSkillsRequest {
-  optional FindAllSkillsRequestFilter filter = 1;
+  optional string filter = 1;
 }
 
 //Response
