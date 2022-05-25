@@ -365,7 +365,7 @@ message FindSkillByNameResponse {
 // }
 
 message FindAllSkillsRequest {
-  optional string filter = 1;
+  string filter = 1;
 }
 
 //Response
