@@ -230,7 +230,7 @@ service SkillManagementService {
   rpc AddSkill (AddSkillRequest) returns (AddSkillResponse) {}
   rpc FindSkillById (FindSkillByIdRequest) returns (FindSkillByIdResponse) {}
   rpc FindSkillByName (FindSkillByNameRequest) returns (FindSkillByNameResponse) {}
-  rpc FindAllSkill (FindAllSkillsRequest) returns (FindAllSkillsResponse) {}
+  rpc FindAllSkills (FindAllSkillsRequest) returns (FindAllSkillsResponse) {}
 }
 
 // AddSkillCategory
