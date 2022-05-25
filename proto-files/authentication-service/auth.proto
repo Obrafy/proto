@@ -42,7 +42,7 @@ message Skill {
   string id = 1;
   string name = 2;
   string description = 3;
-  string skillCategoryId = 4;
+  optional string skillCategoryId = 4;
   Status status = 5;
   int64 createdAt = 6;
   int64 updatedAt = 7;
