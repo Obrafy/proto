@@ -45,7 +45,8 @@ service AuthService {
   rpc DeactivateUserById (DeactivateUserByIdRequest) returns (DeactivateUserByIdResponse) {}
   
   // User Role Management
-  rpc UpdateUserRole (UpdateUserRoleRequest) returns (UpdateUserRoleResponse) {}
+  rpc AddRoleToUser (AddRoleToUserRequest) returns (AddRoleToUserResponse) {}
+  rpc RemoveRoleFromUser (RemoveRoleFromUserRequest) returns (RemoveRoleFromUserResponse) {}
   
   
   // Skill Management
@@ -169,17 +170,34 @@ message RemoveUserByIdResponse {
   RemoveUserByIdResponseData data = 3;
 }
 
-// UpdateUserRole
+// AddRoleToUser
 // Request
-message UpdateUserRoleRequest {
-  repeated Role roles = 1;
-  string userId = 2;
+message AddRoleToUserRequest {
+  string userId = 1;
+  Role role = 2;
 }
 
 // Response
-message UpdateUserRoleResponse {
+message AddRoleToUserResponseData {}
+message AddRoleToUserResponse {
   int32 status = 1;
   repeated string error = 2;
+  AddRoleToUserResponseData data = 3;
+}
+
+// RemoveRoleFromUser
+// Request
+message RemoveRoleFromUserRequest {
+  string userId = 1;
+  Role role = 2;
+}
+
+// Response
+message RemoveRoleFromUserResponseData {}
+message RemoveRoleFromUserResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  RemoveRoleFromUserResponseData data = 3;
 }
 
 // Skill
