@@ -261,14 +261,14 @@ message TaskFindOneResponse {
 // Request
 message TaskUpdateRequest {
     string id = 1;
-    TaskData data = 2;
+    TaskUpdateData  data = 2;
 }
 
 // Response
 message TaskUpdateResponse {
     int32 status = 1;
     string error = 2;
-    TaskUpdateData data = 3;
+    TaskData data = 3;
 }
 
 message TaskUpdateData {
