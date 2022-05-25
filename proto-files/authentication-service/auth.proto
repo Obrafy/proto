@@ -29,11 +29,12 @@ message User {
 }
 
 message SkillCategory {
-  string name = 1;
-  string description = 2;
-  Status status = 3;
-  int64 createdAt = 4;
-  int64 updatedAt = 5;
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  Status status = 4;
+  int64 createdAt = 5;
+  int64 updatedAt = 6;
 }
 
 // --- Services ---
