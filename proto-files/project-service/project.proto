@@ -119,10 +119,10 @@ message UpdateData {
 }
 
 message UpdateProjectData {
-    StatusType status  = 1;
-    string startDate = 2;
-    string expectedFinishedDate = 3;
-    string responsible = 4;
+    optional StatusType status  = 1;
+    optional string startDate = 2;
+    optional string expectedFinishedDate = 3;
+    optional string responsible = 4;
 }
 
 // Remove Project
@@ -272,10 +272,10 @@ message TaskUpdateResponse {
 }
 
 message TaskUpdateData {
-    string category = 1;
-    string activity = 2;
-    string noiseLevel = 3;
-    string dirtLevel = 4;
+    optional string category = 1;
+    optional string activity = 2;
+    optional string noiseLevel = 3;
+    optional string dirtLevel = 4;
 }
 
 // TaskRemove
