@@ -22,10 +22,11 @@ service TaskService {
 
 // All Enums 
 enum StatusType {
-    START = 0;
-    IN_PROGRESS = 1;
-    FINISHED = 2;
-    DELETED = 3;
+    ACTIVE = 0;
+    INACTIVE = 1;
+    IN_PROGRESS = 2;
+    FINISHED = 3;
+    DELETED = 4;
 }
 
 enum LevelType {
@@ -39,6 +40,10 @@ enum UnityType {
     UNID = 2;
 }
 
+message ProjectResponseData {
+    Project project = 1;
+}
+
 // Create Project
 // Request
 message ProjectCreateRequest {
@@ -49,50 +54,32 @@ message ProjectCreateRequest {
     repeated Task tasks = 5;
     StatusType status = 6;
 }
-
 // Response
 message ProjectCreateResponse {
     int32 status = 1;
-    string error = 2;
-  }
+    repeated string error = 2;
+    ProjectResponseData data = 3;
+}
 
 // FindAll Project
 message ProjectFindAllRequest {}
 
 message ProjectFindAllResponse {
     int32 status = 1;
-    string error = 2;
-    repeated FindAllData data = 3;
-}
-
-message FindAllData {
-    string status = 1;
-    int64 startDate = 2;
-    int64 expectedFinishedDate = 3;
-    string responsible = 4;
-    Address address = 5;
-    string id = 6;
+    repeated string error = 2;
+    repeated ProjectResponseData data = 3;
 }
 
 // FindOne Project
 
 message ProjectFindOneRequest {
-    string id =1;
+    string id = 1;
 }
 
 message ProjectFindOneResponse {
     int32 status = 1;
-    string error = 2;
-    FindOneData data = 3;
-}
-
-message FindOneData {
-    string status = 1;
-    int64 startDate = 2;
-    int64 expectedFinishedDate = 3;
-    string responsible = 4;
-    Address address = 5;
-    string id = 6;
+    repeated string error = 2;
+    ProjectResponseData data = 3;
 }
 
 // Update Project
@@ -105,17 +92,8 @@ message ProjectUpdateRequest {
 // Response
 message ProjectUpdateResponse {
     int32 status = 1;
-    string error = 2;
-    UpdateData data = 3;
-}
-
-message UpdateData {
-    string status = 1;
-    int64 startDate = 2;
-    int64 expectedFinishedDate = 3;
-    string responsible = 4;
-    Address address = 5;
-    string id = 6;
+    repeated string error = 2;
+    ProjectResponseData data = 3;
 }
 
 message UpdateProjectData {
@@ -134,7 +112,7 @@ message ProjectRemoveRequest {
 // Response
 message ProjectRemoveResponse {
     int32 status = 1;
-    string error = 2;
+    repeated string error = 2;
     RemoveData data = 3;
 }
 
@@ -150,7 +128,7 @@ message FindAllTaskOfProjectRequest {
 // Response
 message FindAllTaskOfProjectResponse {
     int32 status = 1;
-    string error = 2;
+    repeated string error = 2;
     repeated FindAllTaskOfProjectData data = 3;
 }
 
@@ -175,7 +153,7 @@ message FieldsOverridesRequest {
 // Response
 message FieldsOverridesResponse {
     int32 status = 1;
-    string error = 2;
+    repeated string error = 2;
     FieldsOverrides data = 3;
 }
 
@@ -186,6 +164,23 @@ message FieldsOverrides {
     optional LevelType dirtLevel = 4;
     optional string description = 5;
     optional UnityType unity = 6;
+}
+
+
+message Project {
+    string id = 1;   
+    int32 startDate = 2; 
+	int32 expectedFinishedDate = 3;
+	string responsible = 4;
+    Address address = 5;
+    ProjectTask projectTask = 6;
+}
+
+
+message ProjectTask {
+    string task = 1;
+    repeated string laborers = 2;
+    FieldsOverrides fieldsOverrides = 3;
 }
 
 message Address {
