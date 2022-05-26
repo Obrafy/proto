@@ -355,18 +355,7 @@ message FindSkillByNameResponse {
 
 // FindAllSkills
 // Request
-// message FindAllSkillsRequestFilter {
-//   message FindAllSkillsRequestCategoriesFilter {
-//     string categoryId = 1;
-//   }
-
-
-//   repeated FindAllSkillsRequestCategoriesFilter categories = 1;
-// }
-
-message FindAllSkillsRequest {
-  string testingFilterName = 1;
-}
+message FindAllSkillsRequest {}
 
 //Response
 message FindAllSkillsResponseData {
