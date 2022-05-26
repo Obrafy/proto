@@ -296,6 +296,7 @@ message TaskResponse {
     string description = 5;
     UnityType unity = 6;
     repeated PossibleSkills possibleSkills = 7;
+    Status status = 8;
 }
 
 message TaskResponseData {
