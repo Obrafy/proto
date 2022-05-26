@@ -52,7 +52,7 @@ message ProjectCreateRequest {
 	string responsible = 3;
     Address address = 4;
     repeated Task tasks = 5;
-    StatusType status = 6;
+    Status status = 6;
 }
 // Response
 message ProjectCreateResponse {
@@ -97,7 +97,7 @@ message ProjectUpdateResponse {
 }
 
 message UpdateProjectData {
-    optional StatusType status  = 1;
+    optional Status status  = 1;
     optional string startDate = 2;
     optional string expectedFinishedDate = 3;
     optional string responsible = 4;
