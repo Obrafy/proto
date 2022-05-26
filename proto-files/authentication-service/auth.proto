@@ -2,13 +2,15 @@ syntax = "proto3";
 
 package auth;
 
-// Types 
+// --- Base Types ---
 
 // Role Enum
 enum Role {
-  USER = 0;
-  ADMIN = 1;
-  SUDO = 2;
+  INVALID = 0;
+  USER = 1;
+  ADMIN = 2;
+  SUDO = 3;
+  EMPLOYEE = 4;
 }
 
 // Status Enum
@@ -18,40 +20,43 @@ enum Status {
   DELETED = 2;
 }
 
-
 // User Message
 message User {
-  string email = 1;
-  optional int64 lastLogin = 2;
-  repeated Role roles = 3;
+  string id = 1;
+  string email = 2;
+  optional int64 lastLogin = 3;
+  repeated Role roles = 4;
+  Status status = 5;
+  int64 createdAt = 6;
+  int64 updatedAt = 7;
+}
+
+message SkillCategory {
+  string id = 1;
+  string name = 2;
+  string description = 3;
   Status status = 4;
   int64 createdAt = 5;
   int64 updatedAt = 6;
 }
 
-// Service
+message Skill {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  optional string skillCategoryId = 4;
+  Status status = 5;
+  int64 createdAt = 6;
+  int64 updatedAt = 7;
+}
+
+// --- Services ---
+
+// Authentication Service
 service AuthService {
-  // Pure Authentication
   rpc Register (RegisterRequest) returns (RegisterResponse) {}
   rpc Login (LoginRequest) returns (LoginResponse) {}
-  rpc Validate (ValidateRequest) returns (ValidateResponse) {}
-
-  // User Management
-  rpc FindUserById (FindUserByIdRequest) returns (FindUserByIdResponse) {}
-  rpc RemoveUserById (RemoveUserByIdRequest) returns (RemoveUserByIdResponse) {}
-  
-  // User Status Mangement 
-  rpc ActivateUserById (ActivateUserByIdRequest) returns (ActivateUserByIdResponse) {}
-  rpc DeactivateUserById (DeactivateUserByIdRequest) returns (DeactivateUserByIdResponse) {}
-  
-  // User Role Management
-  rpc AddRoleToUser (AddRoleToUserRequest) returns (AddRoleToUserResponse) {}
-  rpc RemoveRoleFromUser (RemoveRoleFromUserRequest) returns (RemoveRoleFromUserResponse) {}
-  
-  
-  // Skill Management
-  rpc Skill (SkillRequest) returns (SkillResponse) {}
-  
+  rpc Validate (ValidateRequest) returns (ValidateResponse) {}  
 }
 
 // Register
@@ -105,6 +110,24 @@ message ValidateResponse {
   int32 status = 1;
   repeated string error = 2;
   ValidateResponseData data = 3;
+}
+
+// User Management Service
+service UserManagementService {
+  // User Management
+  rpc FindUserById (FindUserByIdRequest) returns (FindUserByIdResponse) {}
+  rpc RemoveUserById (RemoveUserByIdRequest) returns (RemoveUserByIdResponse) {}
+  rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse) {}
+  rpc FindAllUsers (FindAllUsersRequest) returns (FindAllUsersResponse) {}
+  rpc FindAllUsersForRoles (FindAllUsersForRolesRequest) returns (FindAllUsersForRolesResponse) {}
+  
+  // User Status Mangement 
+  rpc ActivateUserById (ActivateUserByIdRequest) returns (ActivateUserByIdResponse) {}
+  rpc DeactivateUserById (DeactivateUserByIdRequest) returns (DeactivateUserByIdResponse) {}
+  
+  // User Role Management
+  rpc AddRoleToUser (AddRoleToUserRequest) returns (AddRoleToUserResponse) {}
+  rpc RemoveRoleFromUser (RemoveRoleFromUserRequest) returns (RemoveRoleFromUserResponse) {}  
 }
 
 // ActivateUser
@@ -170,6 +193,55 @@ message RemoveUserByIdResponse {
   RemoveUserByIdResponseData data = 3;
 }
 
+// FindUserByEmail
+// Request
+message FindUserByEmailRequest {
+  string email = 1;
+}
+
+// Response
+message FindUserByEmailResponseData {
+  User user = 1;
+}
+
+message FindUserByEmailResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindUserByEmailResponseData data = 3;
+}
+
+// FindAllUsers
+// Request
+message FindAllUsersRequest {}
+
+// Response
+message FindAllUsersResponseData {
+  repeated User users = 1;
+}
+
+message FindAllUsersResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllUsersResponseData data = 3;
+}
+
+// FindAllUsersForRoles
+// Request
+message FindAllUsersForRolesRequest {
+  repeated Role roles = 1;
+}
+
+// Response
+message FindAllUsersForRolesResponseData {
+  repeated User users = 1;
+}
+
+message FindAllUsersForRolesResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllUsersForRolesResponseData data = 3;
+}
+
 // AddRoleToUser
 // Request
 message AddRoleToUserRequest {
@@ -200,12 +272,170 @@ message RemoveRoleFromUserResponse {
   RemoveRoleFromUserResponseData data = 3;
 }
 
-// Skill
-message SkillRequest {
+// Skill Management Service
+service SkillManagementService {
+  // Skill Category Management
+  rpc AddSkillCategory (AddSkillCategoryRequest) returns (AddSkillCategoryResponse) {}
+  rpc FindSkillCategoryById (FindSkillCategoryByIdRequest) returns (FindSkillCategoryByIdResponse) {}
+  rpc FindSkillCategoryByName (FindSkillCategoryByNameRequest) returns (FindSkillCategoryByNameResponse) {}
+  rpc FindAllSkillCategories (FindAllSkillCategoriesRequest) returns (FindAllSkillCategoriesResponse) {}
+
+  // Skill Management
+  rpc AddSkill (AddSkillRequest) returns (AddSkillResponse) {}
+  rpc FindSkillById (FindSkillByIdRequest) returns (FindSkillByIdResponse) {}
+  rpc FindSkillByName (FindSkillByNameRequest) returns (FindSkillByNameResponse) {}
+  rpc FindAllSkills (FindAllSkillsRequest) returns (FindAllSkillsResponse) {}
+  rpc FindAllSkillsForCategories (FindAllSkillsForCategoriesRequest) returns (FindAllSkillsForCategoriesResponse) {}
+}
+
+// AddSkillCategory
+// Request
+message AddSkillCategoryRequest {
+  string name = 1;
+  string description = 2;
+}
+
+//Response
+message AddSkillCategoryResponseData {
+  string skillCategoryId = 1;
+}
+
+message AddSkillCategoryResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  AddSkillCategoryResponseData data = 3;
+}
+
+// FindSkillCategoryById
+// Request
+message FindSkillCategoryByIdRequest {
+  string skillCategoryId = 1;
+}
+
+//Response
+message FindSkillCategoryByIdResponseData {
+  SkillCategory skillCategory = 1;
+}
+
+message FindSkillCategoryByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindSkillCategoryByIdResponseData data = 3;
+}
+
+// FindSkillCategoryByName
+// Request
+message FindSkillCategoryByNameRequest {
+  string skillCategoryName = 1;
+}
+
+//Response
+message FindSkillCategoryByNameResponseData {
+  SkillCategory skillCategory = 1;
+}
+
+message FindSkillCategoryByNameResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindSkillCategoryByNameResponseData data = 3;
+}
+
+// FindAllSkillCategories
+// Request
+message FindAllSkillCategoriesRequest {}
+
+//Response
+message FindAllSkillCategoriesResponseData {
+  repeated SkillCategory skillCategories = 1;
+}
+
+message FindAllSkillCategoriesResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllSkillCategoriesResponseData data = 3;
+}
+
+// AddSkill
+// Request
+message AddSkillRequest {
+  string name = 1;
+  string description = 2;
+  optional string category = 3;
+}
+
+//Response
+message AddSkillResponseData {
   string skillId = 1;
 }
 
-message SkillResponse {
+message AddSkillResponse {
   int32 status = 1;
   repeated string error = 2;
+  AddSkillResponseData data = 3;
+}
+
+// FindSkillById
+// Request
+message FindSkillByIdRequest {
+  string skillId = 1;
+}
+
+//Response
+message FindSkillByIdResponseData {
+  Skill skill = 1;
+}
+
+message FindSkillByIdResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindSkillByIdResponseData data = 3;
+}
+
+// FindSkillByName
+// Request
+message FindSkillByNameRequest {
+  string skillName = 1;
+}
+
+//Response
+message FindSkillByNameResponseData {
+  Skill skill = 1;
+}
+
+message FindSkillByNameResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindSkillByNameResponseData data = 3;
+}
+
+// FindAllSkills
+// Request
+message FindAllSkillsRequest {}
+
+//Response
+message FindAllSkillsResponseData {
+  repeated Skill skills = 1;
+}
+
+message FindAllSkillsResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllSkillsResponseData data = 3;
+}
+
+// FindAllSkillsForCategories
+// Request
+message FindAllSkillsForCategoriesRequest {
+  repeated string categoriesIds = 1;
+}
+
+//Response
+message FindAllSkillsForCategoriesResponseData {
+  repeated Skill skills = 1;
+}
+
+message FindAllSkillsForCategoriesResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllSkillsForCategoriesResponseData data = 3;
 }
