@@ -224,8 +224,8 @@ message TaskCreateRequest {
 // Response
 message TaskCreateResponse {
     int32 status = 1;
-    string error = 2;
-    TaskData data = 3;
+    repeated string error = 2;
+    TaskResponseData data = 3;
 }
 
 // TaskFindAllRequest
@@ -235,8 +235,8 @@ message TaskFindAllRequest {}
 // Response
 message TaskFindAllResponse {
     int32 status = 1;
-    string error = 2;
-    repeated TaskData data = 3;
+    repeated string error = 2;
+    repeated TaskResponseData data = 3;
 }
 
 
@@ -249,8 +249,8 @@ message TaskFindOneRequest {
 // Response
 message TaskFindOneResponse {
     int32 status = 1;
-    string error = 2;
-    TaskData data = 3;
+    repeated string error = 2;
+    TaskResponseData data = 3;
 }
 
 // TaskUpdate
@@ -263,8 +263,8 @@ message TaskUpdateRequest {
 // Response
 message TaskUpdateResponse {
     int32 status = 1;
-    string error = 2;
-    TaskData data = 3;
+    repeated string error = 2;
+    TaskResponseData data = 3;
 }
 
 message TaskUpdateData {
@@ -283,17 +283,14 @@ message TaskRemoveRequest {
 // Response
 message TaskRemoveResponse {
     int32 status = 1;
-    string error = 2;
+    repeated string error = 2;
     TaskRemoveDataResponse data = 3;
 }
 
 message TaskRemoveDataResponse{}
 
-message TaskData {
-    string category = 1;
-    string activity = 2;
-    string noiseLevel = 3;
-    string dirtLevel = 4;
-    repeated PossibleSkills possibleSkills = 5;
-    string id = 6;
+message TaskResponseData {
+    Task task = 1;
 }
+
+
