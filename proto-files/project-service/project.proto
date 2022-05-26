@@ -21,7 +21,7 @@ service TaskService {
   }
 
 // All Enums 
-enum StatusType {
+enum Status {
     ACTIVE = 0;
     INACTIVE = 1;
     IN_PROGRESS = 2;
@@ -174,7 +174,7 @@ message Project {
 	string responsible = 4;
     Address address = 5;
     repeated ProjectTask projectTask = 6;
-    StatusType status = 7;
+    Status status = 7;
 }
 
 
