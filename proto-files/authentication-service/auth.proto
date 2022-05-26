@@ -231,6 +231,7 @@ service SkillManagementService {
   rpc FindSkillById (FindSkillByIdRequest) returns (FindSkillByIdResponse) {}
   rpc FindSkillByName (FindSkillByNameRequest) returns (FindSkillByNameResponse) {}
   rpc FindAllSkills (FindAllSkillsRequest) returns (FindAllSkillsResponse) {}
+  rpc FindAllSkillsForCategories (FindAllSkillsForCategoriesRequest) returns (FindAllSkillsForCategoriesResponse) {}
 }
 
 // AddSkillCategory
@@ -366,4 +367,21 @@ message FindAllSkillsResponse {
   int32 status = 1;
   repeated string error = 2;
   FindAllSkillsResponseData data = 3;
+}
+
+// FindAllSkillsForCategories
+// Request
+message FindAllSkillsForCategoriesRequest {
+  repeated string categoriesIds = 1;
+}
+
+//Response
+message FindAllSkillsForCategoriesResponseData {
+  repeated Skill skills = 1;
+}
+
+message FindAllSkillsForCategoriesResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllSkillsForCategoriesResponseData data = 3;
 }
