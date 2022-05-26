@@ -6,9 +6,11 @@ package auth;
 
 // Role Enum
 enum Role {
-  USER = 0;
-  ADMIN = 1;
-  SUDO = 2;
+  INVALID = 0;
+  USER = 1;
+  ADMIN = 2;
+  SUDO = 3;
+  EMPLOYEE = 4;
 }
 
 // Status Enum
