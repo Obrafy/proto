@@ -177,7 +177,6 @@ message Project {
     Status status = 7;
 }
 
-
 message ProjectTask {
     string task = 1;
     repeated string laborers = 2;
@@ -289,8 +288,18 @@ message TaskRemoveResponse {
 
 message TaskRemoveDataResponse{}
 
+message TaskResponse {
+    string category = 1;
+    string activity = 2;
+    LevelType noiseLevel = 3;
+    LevelType dirtLevel = 4;
+    string description = 5;
+    UnityType unity = 6;
+    repeated PossibleSkills possibleSkills = 7;
+}
+
 message TaskResponseData {
-    Task task = 1;
+    TaskResponse task = 1;
 }
 
 
