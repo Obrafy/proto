@@ -173,7 +173,7 @@ message Project {
 	int32 expectedFinishedDate = 3;
 	string responsible = 4;
     Address address = 5;
-    ProjectTask projectTask = 6;
+    repeated ProjectTask projectTask = 6;
     StatusType status = 7;
 }
 
