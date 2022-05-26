@@ -181,7 +181,7 @@ message Project {
 message ProjectTask {
     string task = 1;
     repeated string laborers = 2;
-    FieldsOverrides fieldsOverrides = 3;
+    optional FieldsOverrides fieldsOverrides = 3;
 }
 
 message Address {
