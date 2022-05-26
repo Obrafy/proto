@@ -115,6 +115,9 @@ service UserManagementService {
   // User Management
   rpc FindUserById (FindUserByIdRequest) returns (FindUserByIdResponse) {}
   rpc RemoveUserById (RemoveUserByIdRequest) returns (RemoveUserByIdResponse) {}
+  rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse) {}
+  rpc FindAllUsers (FindAllUsersRequest) returns (FindAllUsersResponse) {}
+  rpc FindAllUsersForRoles (FindAllUsersForRolesRequest) returns (FindAllUsersForRolesResponse) {}
   
   // User Status Mangement 
   rpc ActivateUserById (ActivateUserByIdRequest) returns (ActivateUserByIdResponse) {}
@@ -186,6 +189,55 @@ message RemoveUserByIdResponse {
   int32 status = 1;
   repeated string error = 2;
   RemoveUserByIdResponseData data = 3;
+}
+
+// FindUserByEmail
+// Request
+message FindUserByEmailRequest {
+  string email = 1;
+}
+
+// Response
+message FindUserByEmailResponseData {
+  User user = 1;
+}
+
+message FindUserByEmailResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindUserByEmailResponseData data = 3;
+}
+
+// FindAllUsers
+// Request
+message FindAllUsersRequest {}
+
+// Response
+message FindAllUsersResponseData {
+  repeated User users = 1;
+}
+
+message FindAllUsersResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllUsersResponseData data = 3;
+}
+
+// FindAllUsersForRoles
+// Request
+message FindAllUsersForRolesRequest {
+  repeated Role roles = 1;
+}
+
+// Response
+message FindAllUsersForRolesResponseData {
+  repeated User users = 1;
+}
+
+message FindAllUsersForRolesResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  FindAllUsersForRolesResponseData data = 3;
 }
 
 // AddRoleToUser
