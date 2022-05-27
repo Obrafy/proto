@@ -51,7 +51,7 @@ message ProjectCreateRequest {
 	string expectedFinishedDate = 2;
 	string responsible = 3;
     Address address = 4;
-    repeated Task tasks = 5;
+    repeated string tasks = 5;
     Status status = 6;
 }
 // Response
