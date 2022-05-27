@@ -242,7 +242,8 @@ message DeactivateProjectResponse {
 // AddTasksToProject
 // Request
 message AddTasksToProjectRequest {
-  repeated string tasksIds = 1;
+  string projectId = 1;
+  repeated string tasksIds = 2;
 }
 
 // Response
