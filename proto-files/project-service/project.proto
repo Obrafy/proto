@@ -52,7 +52,6 @@ message ProjectCreateRequest {
 	string responsible = 3;
     Address address = 4;
     repeated string tasks = 5;
-    Status status = 6;
 }
 // Response
 message ProjectCreateResponse {
