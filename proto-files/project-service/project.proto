@@ -234,6 +234,7 @@ message TaskCreateRequest {
     string description = 5;
     UnityType unity = 6;
     repeated PossibleSkills possibleSkills = 7;
+    repeated string laborers = 8;
 }
 
 // Response
