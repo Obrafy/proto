@@ -235,7 +235,7 @@ message DeactivateProjectResponseData {}
 message DeactivateProjectResponse {
     int32 status = 1;
     repeated string error = 2;
-    deactivateProjectResponse data = 3;
+    DeactivateProjectResponse data = 3;
 }
 
 
