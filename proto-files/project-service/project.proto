@@ -10,6 +10,7 @@ service ProjectService {
   rpc remove (ProjectRemoveRequest) returns (ProjectRemoveResponse) {}
   rpc findAllTaskOfProject (FindAllTaskOfProjectRequest) returns (FindAllTaskOfProjectResponse) {}
   rpc fieldsOverrides (FieldsOverridesRequest) returns (FieldsOverridesResponse) {}
+  rpc activateProject (ActivateProjectRequest) returns (ActivateProjectResponse) {}
 }
 
 service TaskService {
@@ -207,6 +208,21 @@ message PossibleSkills {
     string skillId = 1;
     int32 requiredSkillLevel = 2;
 }
+
+// ActivateProject
+// Request
+message ActivateProjectRequest {
+    string projectId = 1;
+}
+
+// Response
+message ActivateProjectResponseData {}
+message ActivateProjectResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    ActivateProjectResponse data = 3;
+}
+
 
 // TaskCreate
 // Request
