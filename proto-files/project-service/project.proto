@@ -12,6 +12,7 @@ service ProjectService {
   rpc fieldsOverrides (FieldsOverridesRequest) returns (FieldsOverridesResponse) {}
   rpc activateProject (ActivateProjectRequest) returns (ActivateProjectResponse) {}
   rpc deactivateProject (DeactivateProjectRequest) returns (DeactivateProjectResponse) {}
+  rpc AddTasksToProject (AddTasksToProjectRequest) returns (AddTasksToProjectResponse) {}
 }
 
 service TaskService {
@@ -236,6 +237,20 @@ message DeactivateProjectResponse {
   int32 status = 1;
   repeated string error = 2;
   DeactivateProjectResponse data = 3;
+}
+
+// AddTasksToProject
+// Request
+message AddTasksToProjectRequest {
+  repeated string tasksIds = 1;
+}
+
+// Response
+message AddTasksToProjectResponseData {}
+message AddTasksToProjectResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  AddTasksToProjectResponse data = 3;
 }
 
 
