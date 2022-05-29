@@ -21,8 +21,8 @@ service TaskService {
   rpc FindOne (TaskFindOneRequest) returns (TaskFindOneResponse) {}
   rpc Update (TaskUpdateRequest) returns (TaskUpdateResponse) {}
   rpc Remove (TaskRemoveRequest) returns (TaskRemoveResponse) {}
-  rpc ActivateProject (ActivateTaskRequest) returns (ActivateTaskResponse) {}
-  rpc AeactivateProject (DeactivateTaskRequest) returns (DeactivateTaskResponse) {}
+  rpc ActivateTask (ActivateTaskRequest) returns (ActivateTaskResponse) {}
+  rpc DeactivateTask (DeactivateTaskRequest) returns (DeactivateTaskResponse) {}
 }
 
 // All Enums 
