@@ -3,24 +3,26 @@ syntax = "proto3";
 package project;
 
 service ProjectService {
-  rpc create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
-  rpc findAll (ProjectFindAllRequest) returns (ProjectFindAllResponse) {}
-  rpc findOne (ProjectFindOneRequest) returns (ProjectFindOneResponse) {}
-  rpc update (ProjectUpdateRequest) returns (ProjectUpdateResponse) {}
-  rpc remove (ProjectRemoveRequest) returns (ProjectRemoveResponse) {}
-  rpc findAllTaskOfProject (FindAllTaskOfProjectRequest) returns (FindAllTaskOfProjectResponse) {}
-  rpc fieldsOverrides (FieldsOverridesRequest) returns (FieldsOverridesResponse) {}
-  rpc activateProject (ActivateProjectRequest) returns (ActivateProjectResponse) {}
-  rpc deactivateProject (DeactivateProjectRequest) returns (DeactivateProjectResponse) {}
+  rpc Create (ProjectCreateRequest) returns (ProjectCreateResponse) {}
+  rpc FindAll (ProjectFindAllRequest) returns (ProjectFindAllResponse) {}
+  rpc FindOne (ProjectFindOneRequest) returns (ProjectFindOneResponse) {}
+  rpc Update (ProjectUpdateRequest) returns (ProjectUpdateResponse) {}
+  rpc Remove (ProjectRemoveRequest) returns (ProjectRemoveResponse) {}
+  rpc FindAllTaskOfProject (FindAllTaskOfProjectRequest) returns (FindAllTaskOfProjectResponse) {}
+  rpc FieldsOverrides (FieldsOverridesRequest) returns (FieldsOverridesResponse) {}
+  rpc ActivateProject (ActivateProjectRequest) returns (ActivateProjectResponse) {}
+  rpc DeactivateProject (DeactivateProjectRequest) returns (DeactivateProjectResponse) {}
   rpc AddTasksToProject (AddTasksToProjectRequest) returns (AddTasksToProjectResponse) {}
 }
 
 service TaskService {
-  rpc create (TaskCreateRequest) returns (TaskCreateResponse) {}
-  rpc findAll (TaskFindAllRequest) returns (TaskFindAllResponse) {}
-  rpc findOne (TaskFindOneRequest) returns (TaskFindOneResponse) {}
-  rpc update (TaskUpdateRequest) returns (TaskUpdateResponse) {}
-  rpc remove (TaskRemoveRequest) returns (TaskRemoveResponse) {}
+  rpc Create (TaskCreateRequest) returns (TaskCreateResponse) {}
+  rpc FindAll (TaskFindAllRequest) returns (TaskFindAllResponse) {}
+  rpc FindOne (TaskFindOneRequest) returns (TaskFindOneResponse) {}
+  rpc Update (TaskUpdateRequest) returns (TaskUpdateResponse) {}
+  rpc Remove (TaskRemoveRequest) returns (TaskRemoveResponse) {}
+  rpc ActivateProject (ActivateTaskRequest) returns (ActivateTaskResponse) {}
+  rpc AeactivateProject (DeactivateTaskRequest) returns (DeactivateTaskResponse) {}
 }
 
 // All Enums 
@@ -350,4 +352,31 @@ message TaskResponseData {
   TaskResponse task = 1;
 }
 
+// ActivateTask
+// Request
+message ActivateTaskRequest {
+    string taskId = 1;
+  }
+  
+  // Response
+  message ActivateTaskResponseData {}
+  message ActivateTaskResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    ActivateTaskResponseData data = 3;
+  }
 
+
+// DeactivateTask
+// Request
+message DeactivateTaskRequest {
+    string taskId = 1;
+  }
+  
+  // Response
+  message DeactivateTaskResponseData {}
+  message DeactivateTaskResponse {
+    int32 status = 1;
+    repeated string error = 2;
+    DeactivateTaskResponseData data = 3;
+  }
