@@ -385,8 +385,8 @@ message DeactivateTaskRequest {
 // AddSkillToTask
 // Request
 message AddSkillToTaskRequest {
-  string projectId = 1;
-  repeated string tasksIds = 2;
+  string taskId = 1;
+  repeated string skillsIds = 2;
 }
 
 // Response
