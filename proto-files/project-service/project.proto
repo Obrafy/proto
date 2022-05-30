@@ -23,6 +23,7 @@ service TaskService {
   rpc Remove (TaskRemoveRequest) returns (TaskRemoveResponse) {}
   rpc ActivateTask (ActivateTaskRequest) returns (ActivateTaskResponse) {}
   rpc DeactivateTask (DeactivateTaskRequest) returns (DeactivateTaskResponse) {}
+  rpc AddSkillToTask (AddSkillToTaskRequest) returns (AddSkillToTaskResponse) {}
 }
 
 // All Enums 
@@ -380,3 +381,18 @@ message DeactivateTaskRequest {
     repeated string error = 2;
     DeactivateTaskResponseData data = 3;
   }
+
+// AddSkillToTask
+// Request
+message AddSkillToTaskRequest {
+  string projectId = 1;
+  repeated string tasksIds = 2;
+}
+
+// Response
+message AddSkillToTaskResponseData {}
+message AddSkillToTaskResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  AddSkillToTaskResponseData data = 3;
+}
