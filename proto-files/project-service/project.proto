@@ -394,7 +394,7 @@ message SkillRequest {
 // Request
 message AddSkillToTaskRequest {
   string taskId = 1;
-  repeated SkillRequest skill = 2;
+  repeated SkillRequest skills = 2;
 }
 
 // Response
