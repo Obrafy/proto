@@ -382,11 +382,19 @@ message DeactivateTaskRequest {
     DeactivateTaskResponseData data = 3;
   }
 
+
+
 // AddSkillToTask
+
+message SkillRequest {
+  string id = 1;
+  int32 requiredSkillLevel = 2;
+}
+
 // Request
 message AddSkillToTaskRequest {
   string taskId = 1;
-  repeated string skillsIds = 2;
+  repeated SkillRequest skill = 2;
 }
 
 // Response
