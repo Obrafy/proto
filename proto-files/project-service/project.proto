@@ -13,6 +13,7 @@ service ProjectService {
   rpc ActivateProject (ActivateProjectRequest) returns (ActivateProjectResponse) {}
   rpc DeactivateProject (DeactivateProjectRequest) returns (DeactivateProjectResponse) {}
   rpc AddTasksToProject (AddTasksToProjectRequest) returns (AddTasksToProjectResponse) {}
+  rpc RemoveTasksToProject (RemoveTasksToProjectRequest) returns (RemoveTasksToProjectResponse) {}
 }
 
 service TaskService {
@@ -79,7 +80,7 @@ message ProjectFindAllResponse {
 // FindOne Project
 
 message ProjectFindOneRequest {
-  string id = 1;
+  string projectId = 1;
 }
 
 message ProjectFindOneResponse {
@@ -91,7 +92,7 @@ message ProjectFindOneResponse {
 // Update Project
 // Request
 message ProjectUpdateRequest {
-  string id = 1;
+  string projectId = 1;
   UpdateProjectData data = 2;
 }
 
@@ -112,7 +113,7 @@ message UpdateProjectData {
 // Remove Project
 // Request
 message ProjectRemoveRequest {
-  string id = 1;
+  string projectId = 1;
 }
 
 // Response
@@ -128,7 +129,7 @@ message RemoveData {}
 // FindAllTaskOfProjectRequest
 // Request
 message FindAllTaskOfProjectRequest {
-  string id = 1;
+  string projectId = 1;
 }
 
 // Response
@@ -255,6 +256,21 @@ message AddTasksToProjectResponse {
   int32 status = 1;
   repeated string error = 2;
   AddTasksToProjectResponse data = 3;
+}
+
+// RemoveTasksToProject
+// RemoveTasksToProjectRequest
+message RemoveTasksToProjectRequest {
+  string projectId = 1;
+  repeated string tasksIds = 2;
+}
+
+// RemoveTasksToProjectResponse
+message RemoveTasksToProjectResponseData {}
+message RemoveTasksToProjectResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  RemoveTasksToProjectResponseData data = 3;
 }
 
 
