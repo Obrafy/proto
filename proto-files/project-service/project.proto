@@ -427,7 +427,8 @@ message AddSkillToTaskResponse {
 // RemoveSkillToTask
 // RemoveSkillToTaskRequest
 message RemoveSkillToTaskRequest {
-  repeated string skillIds = 1;
+  string taskId = 1;
+  repeated string skillIds = 2;
 }
 
 // RemoveSkillToTaskResponse
