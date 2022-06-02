@@ -75,7 +75,7 @@ message ProjectFindAllRequest {}
 message ProjectFindAllResponse {
   int32 status = 1;
   repeated string error = 2;
-  repeated ProjectResponseData data = 3;
+  repeated Project data = 3;
 }
 
 // FindOne Project
