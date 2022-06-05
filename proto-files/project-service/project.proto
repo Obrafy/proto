@@ -445,7 +445,8 @@ message RemoveSkillToTaskResponse {
 // AddLaborersToProjectRequest
 message AddLaborersToProjectRequest {
   string projectId = 1;
-  repeated string laborers = 2;
+  string taskId = 2;
+  repeated string laborers = 3;
 }
 
 message AddLaborersToProjectResponseData {}
@@ -460,7 +461,8 @@ message AddLaborersToProjectResponse {
 // RemoveLaborersToProjectRequest
 message RemoveLaborersToProjectRequest {
   string projectId = 1;
-  repeated string laborers = 2;
+  string taskId = 2;
+  repeated string laborers = 3;
 }
 
 // RemoveLaborersToProjectResponse
