@@ -101,6 +101,6 @@ message pUpdateRequest {
 
 message pResponseArrayObject {
     int32 status = 1;
-    string error = 2;
+    repeated string error = 2;
     repeated EmployeeObject data = 3;
 }
