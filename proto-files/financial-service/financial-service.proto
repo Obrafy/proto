@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package financialProject;
 
-service TaskPrice {
+service ProjectPrice {
     rpc Create (CreateRequest) returns (WithObjectResponse) {}
     rpc Find (Empty) returns (FindResponse) {}
     rpc FindOne (FindByIdRequest) returns (WithObjectResponse) {}
@@ -22,10 +22,10 @@ service Employee {
 message Empty {}
 
 
-// <-------------- TaskPrice --------------->
-message TaskPriceObject {
+// <-------------- ProjectPrice --------------->
+message ProjectPriceObject {
     string id = 1;
-    string taskId = 2;
+    string projectId = 2;
     double price = 3;
     int64 createdAt = 4;
     int64 updatedAt = 5;
@@ -35,7 +35,7 @@ message TaskPriceObject {
 message WithObjectResponse {
     int32 status = 1;
     repeated string error = 2;
-    TaskPriceObject data = 3;
+    ProjectPriceObject data = 3;
 }
 
 
@@ -45,7 +45,7 @@ message FindByIdRequest {
 
 
 message CreateRequest {
-    string taskId = 1;
+    string projectId = 1;
     float price = 2; 
 }
 
@@ -53,16 +53,16 @@ message CreateRequest {
 message FindResponse {
     int32 status = 1;
     repeated string error = 2;
-    repeated TaskPriceObject data = 3;
+    repeated ProjectPriceObject data = 3;
 }
 
-message UpdateTaskPriceObject {
-    optional string taskId = 1;
+message UpdateProjectPriceObject {
+    optional string projectId = 1;
     optional float price = 2;
 }
 message UpdateRequest {
     string id = 1;
-    UpdateTaskPriceObject data = 2;
+    UpdateProjectPriceObject data = 2;
 }
 
 
