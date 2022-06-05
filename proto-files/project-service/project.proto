@@ -14,6 +14,8 @@ service ProjectService {
   rpc DeactivateProject (DeactivateProjectRequest) returns (DeactivateProjectResponse) {}
   rpc AddTasksToProject (AddTasksToProjectRequest) returns (AddTasksToProjectResponse) {}
   rpc RemoveTasksToProject (RemoveTasksToProjectRequest) returns (RemoveTasksToProjectResponse) {}
+  rpc AddLaborersToProject (AddLaborersToProjectRequest) returns (AddLaborersToProjectResponse) {}
+  rpc RemoveLaborersToProject (RemoveLaborersToProjectRequest) returns (RemoveLaborersToProjectResponse) {}
 }
 
 service TaskService {
@@ -437,4 +439,34 @@ message RemoveSkillToTaskResponse {
   int32 status = 1;
   repeated string error = 2;
   RemoveSkillToTaskResponseData data = 3;
+}
+
+// AddLaborersToProject
+// AddLaborersToProjectRequest
+message AddLaborersToProjectRequest {
+  string projectId = 1;
+  repeated string laborers = 2;
+}
+
+message AddLaborersToProjectResponseData {}
+// AddLaborersToProjectResponse
+message AddLaborersToProjectResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  AddLaborersToProjectResponseData data = 3;
+}
+
+// RemoveLaborersToProject
+// RemoveLaborersToProjectRequest
+message RemoveLaborersToProjectRequest {
+  string projectId = 1;
+  repeated string laborers = 2;
+}
+
+// RemoveLaborersToProjectResponse
+message RemoveLaborersToProjectResponseData {}
+message RemoveLaborersToProjectResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  RemoveLaborersToProjectResponseData data = 3;
 }
