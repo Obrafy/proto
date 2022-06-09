@@ -58,8 +58,8 @@ message ProjectResponseData {
 // Create Project
 // Request
 message ProjectCreateRequest {
-  string startDate = 1;
-	string expectedFinishedDate = 2;
+  int32 startDate = 1;
+	int32 expectedFinishedDate = 2;
 	string responsible = 3;
   Address address = 4;
   repeated string tasks = 5;
@@ -108,8 +108,8 @@ message ProjectUpdateResponse {
 
 message UpdateProjectData {
   optional Status status  = 1;
-  optional string startDate = 2;
-  optional string expectedFinishedDate = 3;
+  optional int32 startDate = 2;
+  optional int32 expectedFinishedDate = 3;
   optional string responsible = 4;
 }
 
