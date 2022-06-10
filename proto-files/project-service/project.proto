@@ -149,8 +149,7 @@ message FindAllTaskOfProjectData {
   LevelType dirtLevel = 4;
   string description = 5;
   UnityType unity = 6;
-  float effort = 7;
-  repeated PossibleSkills possibleSkills = 8;
+  repeated PossibleSkills possibleSkills = 7;
 }
 
 // FieldsOverwriters
@@ -175,7 +174,6 @@ message FieldsOverrides {
   optional LevelType dirtLevel = 4;
   optional string description = 5;
   optional UnityType unity = 6;
-  optional float effort = 7;
 }
 
 
@@ -192,7 +190,8 @@ message Project {
 message ProjectTask {
   string task = 1;
   repeated string laborers = 2;
-  optional FieldsOverrides fieldsOverrides = 3;
+  float effort = 3;
+  optional FieldsOverrides fieldsOverrides = 4;
 }
 
 message Address {
@@ -250,9 +249,16 @@ message DeactivateProjectResponse {
 
 // AddTasksToProject
 // Request
+message ProjectTaskRequestData {
+  string tasksIds = 1;
+  float effort = 2;
+  int64 durationInWorkDays = 3;
+}
+
 message AddTasksToProjectRequest {
   string projectId = 1;
-  repeated string tasksIds = 2;
+  repeated ProjectTaskRequestData tasks  = 2;
+
 }
 
 // Response
@@ -260,7 +266,7 @@ message AddTasksToProjectResponseData {}
 message AddTasksToProjectResponse {
   int32 status = 1;
   repeated string error = 2;
-  AddTasksToProjectResponse data = 3;
+  AddTasksToProjectResponseData data = 3;
 }
 
 // RemoveTasksToProject
@@ -288,8 +294,7 @@ message TaskCreateRequest {
   LevelType dirtLevel = 4;
   string description = 5;
   UnityType unity = 6;
-  float effort = 7;
-  repeated PossibleSkills possibleSkills = 8;
+  repeated PossibleSkills possibleSkills = 7;
 }
 
 // Response
@@ -367,9 +372,8 @@ message TaskResponse {
   LevelType dirtLevel = 4;
   string description = 5;
   UnityType unity = 6;
-  float effort = 7;
-  repeated PossibleSkills possibleSkills = 8;
-  Status status = 9;
+  repeated PossibleSkills possibleSkills = 7;
+  Status status = 8;
 }
 
 message TaskResponseData {
