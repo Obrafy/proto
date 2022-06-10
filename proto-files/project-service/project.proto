@@ -210,7 +210,8 @@ message Task {
   string description = 5;
   UnityType unity = 6;
   repeated PossibleSkills possibleSkills = 7;
-  repeated string laborers = 8;
+  string id = 8;
+  string status = 9;
 }
 
 message PossibleSkills {
@@ -293,7 +294,7 @@ message TaskCreateRequest {
 message TaskCreateResponse {
   int32 status = 1;
   repeated string error = 2;
-  TaskResponseData data = 3;
+  Task data = 3;
 }
 
 // TaskFindAllRequest
@@ -304,7 +305,7 @@ message TaskFindAllRequest {}
 message TaskFindAllResponse {
   int32 status = 1;
   repeated string error = 2;
-  repeated TaskResponseData data = 3;
+  repeated Task data = 3;
 }
 
 
@@ -318,7 +319,7 @@ message TaskFindOneRequest {
 message TaskFindOneResponse {
   int32 status = 1;
   repeated string error = 2;
-  TaskResponseData data = 3;
+  Task data = 3;
 }
 
 // TaskUpdate
@@ -332,7 +333,7 @@ message TaskUpdateRequest {
 message TaskUpdateResponse {
   int32 status = 1;
   repeated string error = 2;
-  TaskResponseData data = 3;
+  Task data = 3;
 }
 
 message TaskUpdateData {
@@ -348,28 +349,12 @@ message TaskRemoveRequest {
   string taskId = 1;
 }
 
+message TaskRemoveDataResponse {}
 // Response
 message TaskRemoveResponse {
   int32 status = 1;
   repeated string error = 2;
   TaskRemoveDataResponse data = 3;
-}
-
-message TaskRemoveDataResponse{}
-
-message TaskResponse {
-  string category = 1;
-  string activity = 2;
-  LevelType noiseLevel = 3;
-  LevelType dirtLevel = 4;
-  string description = 5;
-  UnityType unity = 6;
-  repeated PossibleSkills possibleSkills = 7;
-  Status status = 8;
-}
-
-message TaskResponseData {
-  TaskResponse task = 1;
 }
 
 // ActivateTask
@@ -424,7 +409,6 @@ message AddSkillToTaskResponse {
   repeated string error = 2;
   AddSkillToTaskResponseData data = 3;
 }
-
 
 // RemoveSkillToTask
 // RemoveSkillToTaskRequest
