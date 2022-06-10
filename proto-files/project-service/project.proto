@@ -162,7 +162,15 @@ message FieldsOverridesRequest {
 message FieldsOverridesResponse {
   int32 status = 1;
   repeated string error = 2;
-  FieldsOverrides data = 3;
+  FieldsOverridesTaskOfProjectData data = 3;
+}
+
+message FieldsOverridesTaskOfProjectData {
+  string task = 1;
+  repeated string laborers = 2;
+  float effort = 3;
+  int64 durationInWorkDays = 4;
+  optional FieldsOverrides fieldsOverrides = 5;
 }
 
 message FieldsOverrides {
@@ -172,8 +180,8 @@ message FieldsOverrides {
   optional LevelType dirtLevel = 4;
   optional string description = 5;
   optional UnityType unity = 6;
+  optional int32 priority = 7;
 }
-
 
 message Project {
   string id = 1;   
