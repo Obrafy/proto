@@ -143,13 +143,11 @@ message FindAllTaskOfProjectResponse {
 }
 
 message FindAllTaskOfProjectData {
-  string category = 1;
-  string activity = 2;
-  LevelType noiseLevel = 3;
-  LevelType dirtLevel = 4;
-  string description = 5;
-  UnityType unity = 6;
-  repeated PossibleSkills possibleSkills = 7;
+  string task = 1;
+  repeated string laborers = 2;
+  float effort = 3;
+  int64 durationInWorkDays = 4;
+  optional FieldsOverrides fieldsOverrides = 5;
 }
 
 // FieldsOverwriters
