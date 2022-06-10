@@ -191,7 +191,8 @@ message ProjectTask {
   string task = 1;
   repeated string laborers = 2;
   float effort = 3;
-  optional FieldsOverrides fieldsOverrides = 4;
+  int64 durationInWorkDays = 4;
+  optional FieldsOverrides fieldsOverrides = 5;
 }
 
 message Address {
