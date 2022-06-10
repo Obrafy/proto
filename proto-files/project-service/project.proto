@@ -212,6 +212,7 @@ message Task {
   repeated PossibleSkills possibleSkills = 7;
   string id = 8;
   string status = 9;
+  int32 priority = 10;
 }
 
 message PossibleSkills {
@@ -295,6 +296,7 @@ message TaskCreateRequest {
   string description = 5;
   UnityType unity = 6;
   repeated PossibleSkills possibleSkills = 7;
+  int32 priority = 8;
 }
 
 // Response
@@ -348,6 +350,7 @@ message TaskUpdateData {
   optional string activity = 2;
   optional string noiseLevel = 3;
   optional string dirtLevel = 4;
+  optional int32 priority = 5;
 }
 
 // TaskRemove
