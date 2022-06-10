@@ -149,7 +149,8 @@ message FindAllTaskOfProjectData {
   LevelType dirtLevel = 4;
   string description = 5;
   UnityType unity = 6;
-  repeated PossibleSkills possibleSkills = 7;
+  float effort = 7;
+  repeated PossibleSkills possibleSkills = 8;
 }
 
 // FieldsOverwriters
@@ -174,6 +175,7 @@ message FieldsOverrides {
   optional LevelType dirtLevel = 4;
   optional string description = 5;
   optional UnityType unity = 6;
+  optional float effort = 7;
 }
 
 
@@ -286,7 +288,8 @@ message TaskCreateRequest {
   LevelType dirtLevel = 4;
   string description = 5;
   UnityType unity = 6;
-  repeated PossibleSkills possibleSkills = 7;
+  float effort = 7;
+  repeated PossibleSkills possibleSkills = 8;
 }
 
 // Response
@@ -364,8 +367,9 @@ message TaskResponse {
   LevelType dirtLevel = 4;
   string description = 5;
   UnityType unity = 6;
-  repeated PossibleSkills possibleSkills = 7;
-  Status status = 8;
+  float effort = 7;
+  repeated PossibleSkills possibleSkills = 8;
+  Status status = 9;
 }
 
 message TaskResponseData {
